@@ -55,6 +55,7 @@ span {
 	display: flex;
 	flex-direction: row;
 	justify-content: start;
+	flex-wrap: wrap;
 	gap: 15px;
 }
 
