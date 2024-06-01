@@ -17,6 +17,11 @@ body {
 	--chip-font-size: 18px;
 	--chip-border-radius: 24px;
 	--chip-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+	--section-margin: 100px 0;
+	--ts-mui-css-color: #1e90ff;
+	--react-tailwind-sql-color: #00bfff;
+	--html-maven-color: #ff6347;
+	--rest-spring-node-mongo-color: #3cb371;
 }
 
 ul,
@@ -33,6 +38,12 @@ h2 {
 	font-size: 30px;
 	font-weight: bold;
 	color: var(--primary-text-color);
+}
+
+h5 {
+	font-size: 28px;
+	font-weight: bold;
+	color: var(--secondary-text-color);
 }
 
 p {
@@ -65,10 +76,105 @@ span {
 	justify-content: space-between;
 }
 
+.fv-start {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	gap: 15px;
+}
+
 .container {
 	margin: 0 auto;
 	padding: 0 30px;
 	max-width: 1400px;
+}
+
+.chip {
+	padding: var(--chip-padding);
+	border-radius: var(--chip-border-radius);
+	background-color: rgb(173, 216, 230);
+	box-shadow: var(--chip-shadow);
+	font-size: var(--chip-font-size);
+}
+
+.tiny {
+	font-size: 15px;
+	padding: 2px 4px;
+}
+
+.small {
+	gap: 5px;
+}
+
+.js {
+	background-color: #ffd700;
+}
+
+.ts,
+.mui,
+.css {
+	background-color: var(--ts-mui-css-color);
+}
+
+.react,
+.tailwind,
+.sql {
+	background-color: var(--react-tailwind-sql-color);
+}
+
+.redux {
+	background-color: #ba55d3;
+}
+
+.axios {
+	background-color: #9370db;
+}
+
+.html,
+.maven {
+	background-color: var(--html-maven-color);
+}
+
+.scss {
+	background-color: #ee82ee;
+}
+
+.rest,
+.spring,
+.node,
+.mongo {
+	background-color: var(--rest-spring-node-mongo-color);
+}
+
+.postman {
+	background-color: #ffa07a;
+}
+
+.git {
+	background-color: #6a5acd;
+}
+
+.figma {
+	background-color: #dda0dd;
+}
+
+.java {
+	background-color: #ff4500;
+}
+
+.see-more {
+	border: none;
+	border-radius: 8px;
+	padding: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s linear;
+	max-height: 30px;
+	align-self: start;
+}
+
+.see-more:hover {
+	background-color: var(--primary-text-color);
 }
 
 /* Utiliti classes */
@@ -120,7 +226,8 @@ span {
 
 /* About */
 .about {
-	margin: 100px 0;
+	margin: var(--section-margin);
+	display: none;
 }
 
 .about-row {
@@ -134,66 +241,6 @@ span {
 	font-size: 20px;
 }
 
-.chip {
-	padding: var(--chip-padding);
-	border-radius: var(--chip-border-radius);
-	background-color: rgb(173, 216, 230);
-	box-shadow: var(--chip-shadow);
-	font-size: var(--chip-font-size);
-}
-
-.js {
-	background-color: #ffd700;
-}
-
-.ts {
-	background-color: #1e90ff;
-}
-
-.react {
-	background-color: #00bfff;
-}
-
-.redux {
-	background-color: #ba55d3;
-}
-
-.axios {
-	background-color: #9370db;
-}
-
-.css {
-	background-color: #1e90ff;
-}
-
-.html {
-	background-color: #ff6347;
-}
-
-.scss {
-	background-color: #ee82ee;
-}
-
-.mui {
-	background-color: #1e90ff;
-}
-
-.rest {
-	background-color: #3cb371;
-}
-
-.postman {
-	background-color: #ffa07a;
-}
-
-.git {
-	background-color: #6a5acd;
-}
-
-.figma {
-	background-color: #dda0dd;
-}
-
 .contact-item:hover {
 	text-decoration: underline;
 }
@@ -202,11 +249,12 @@ span {
 
 /* Experience */
 .experience {
-	display: none;
+	/* display: none; */
+	margin: var(--section-margin);
 }
 
 .experience-row {
-	width: 100%;
+	gap: 15px;
 }
 
 .project-grid {
@@ -218,58 +266,17 @@ span {
 }
 
 .project-item {
-	width: 100%;
-	height: 150px;
-	border: 2px solid red;
+	border-radius: var(--chip-border-radius);
+	box-shadow: var(--chip-shadow);
+	background-color: rgb(173, 216, 230);
+	padding: 10px;
 }
 
-.project-title {
-	background-color: gray;
-	width: 100%;
-	height: 100%;
+.project-details {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.project-title h5 {
-	font-size: 24px;
-}
-
-.project-item {
-	perspective: 1000px;
-	position: relative;
-}
-
-.project-item-inner {
-	width: 100%;
-	height: 100%;
-	position: relative;
-	transition: transform 0.6s;
-	transform-style: preserve-3d;
-}
-
-.front-side,
-.back-side {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	backface-visibility: hidden;
-}
-
-.front-side {
-	transform: rotateY(0deg);
-}
-
-.back-side {
-	transform: rotateY(180deg);
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.back-side {
-	transform: rotateY(180deg);
+	flex-direction: column;
+	gap: 10px;
+	flex: 1;
 }
 
 .project-item:hover .project-item-inner {
@@ -279,5 +286,15 @@ span {
 /* Experience */
 
 /* Media */
+@media screen and (max-width: 840px) {
+	.project-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
 
+@media screen and (max-width: 600px) {
+	.project-grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
 /* Media */
