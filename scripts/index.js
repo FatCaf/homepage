@@ -7,6 +7,16 @@ const projects = document.querySelectorAll('.project-item');
 const button = document.getElementById('button');
 const modalWrapper = document.getElementById('modal-wrapper');
 const modal = document.getElementById('modal');
+const email = document.getElementById('email');
+
+email.addEventListener('click', () => {
+	const text = email.innerText;
+
+	navigator.clipboard.writeText(text);
+
+	alert(text + ' copied to clipboard');
+});
+
 button.addEventListener('click', () => {
 	modalWrapper.style.display = 'block';
 	modal.innerHTML = createModal(test);
