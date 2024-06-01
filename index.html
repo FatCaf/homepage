@@ -3,9 +3,227 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<script defer type="module" src="./scripts/timeline/Timeline.js"></script>
+		<script type="module" src="./scripts/index.js"></script>
 		<title>Résumé</title>
 	</head>
 	<body>
-		Hello World! &#x1F609;
+		<header class="head">
+			<div class="container">
+				<nav class="navigation">
+					<ul class="navigation-list fh-start">
+						<li class="navigation-list-item">
+							<a href="#" id="about">About</a>
+						</li>
+						<li class="navigation-list-item">
+							<a href="#" id="experience">Experience</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<section class="about">
+				<div class="container">
+					<div class="about-row fv">
+						<h2>About me</h2>
+						<p class="about-text">
+							I'm Mykyta, a dedicated and ambitious developer, specealizing in
+							Front-end develompent.<br />
+							Studyed Computer science and Front-end development in SH++ IT
+							School. <br />
+							I constantly strive for new knowledge and improvement of my
+							skills.<br />
+							Therefore I study Node.js, Express, SQL and MongoDB to further
+							expand my skill set and become a Full-stack dev.
+						</p>
+						<h2>Skills</h2>
+						<div class="skills-block fh-start">
+							<div class="chip">
+								<p>Web application design and development</p>
+							</div>
+							<div class="chip"><p>UI components development</p></div>
+							<div class="chip">
+								<p>New functionality implementation</p>
+							</div>
+							<div class="chip"><p>Innovate problem solving</p></div>
+						</div>
+						<h2>Tech stack</h2>
+						<div class="tech-stack-block fh-start">
+							<div class="chip js"><span>JavaScript</span></div>
+							<div class="chip ts"><span>TypeScript</span></div>
+							<div class="chip react"><span>React</span></div>
+							<div class="chip redux"><span>Redux Toolkit</span></div>
+							<div class="chip axios"><span>Axios</span></div>
+							<div class="chip css"><span>CSS</span></div>
+							<div class="chip html"><span>HTML</span></div>
+							<div class="chip scss"><span>SCSS</span></div>
+							<div class="chip mui"><span>Material UI</span></div>
+							<div class="chip rest"><span>REST API</span></div>
+							<div class="chip postman"><span>Postman</span></div>
+							<div class="chip git"><span>GIT</span></div>
+							<div class="chip figma"><span>Figma</span></div>
+						</div>
+						<h2>Languages</h2>
+						<div class="languages-block fh-start">
+							<div class="chip"><span>English - speaking</span></div>
+							<div class="chip"><span>Ukrainian - native</span></div>
+						</div>
+						<h2>Contacts</h2>
+						<div class="contacts-block fh-start">
+							<a
+								href="https://www.linkedin.com/in/mykyta-neklesa/"
+								rel="author"
+								class="contact-item"
+								target="_blank"
+							>
+								<div class="chip">
+									<span>Linked-In</span>
+								</div>
+							</a>
+							<a
+								href="https://t.me/mneklesa"
+								rel="author"
+								class="contact-item"
+								target="_blank"
+							>
+								<div class="chip">
+									<span>Telegram</span>
+								</div>
+							</a>
+							<a
+								href="https://github.com/FatCaf"
+								rel="author"
+								class="contact-item"
+								target="_blank"
+							>
+								<div class="chip">
+									<span>Github</span>
+								</div>
+							</a>
+							<a href="#" rel="author" class="contact-item">
+								<div class="chip">
+									<span id="email">nikitaneklesa5@gmail.com</span>
+								</div>
+							</a>
+							<a href="tel:+380683889209" rel="author" class="contact-item">
+								<div class="chip">
+									<span>+380683889209</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="experience">
+				<div class="container">
+					<div class="experience-row fv">
+						<h2>Experience</h2>
+						<!-- <custom-timeline></custom-timeline> -->
+						<h2>Projects</h2>
+						<div class="project-grid">
+							<div class="project-item fv-start">
+								<div class="project-title">
+									<h5>Snapshot</h5>
+								</div>
+								<div class="project-details">
+									<p>Project type: <strong>Command project</strong></p>
+									<p>Stack: <strong>Front-End, Back-End</strong></p>
+									<p>Technologies:</p>
+									<div class="tech-stack small fh-start">
+										<div class="chip tiny ts"><span>TypeScript</span></div>
+										<div class="chip tiny react"><span>React</span></div>
+										<div class="chip tiny redux">
+											<span>Redux Toolkit</span>
+										</div>
+										<div class="chip tiny axios"><span>Axios</span></div>
+										<div class="chip tiny rest"><span>REST API</span></div>
+										<div class="chip tiny postman"><span>Postman</span></div>
+										<div class="chip tiny scss"><span>SCSS</span></div>
+										<div class="chip tiny html"><span>HTML</span></div>
+										<div class="chip tiny java"><span>Java</span></div>
+										<div class="chip tiny spring"><span>Spring Boot</span></div>
+										<div class="chip tiny sql"><span>PostgreSQL</span></div>
+										<div class="chip tiny maven"><span>Maven</span></div>
+									</div>
+								</div>
+								<button class="see-more" id="1">Click to see more</button>
+							</div>
+							<div class="project-item fv-start">
+								<div class="project-title">
+									<h5>K-Points</h5>
+								</div>
+								<div class="project-details">
+									<p>Project type: <strong>Command project</strong></p>
+									<p>Stack: <strong>Front-End, Back-End</strong></p>
+									<p>Technologies:</p>
+									<div class="tech-stack small fh-start">
+										<div class="chip tiny ts"><span>TypeScript</span></div>
+										<div class="chip tiny react"><span>React</span></div>
+										<div class="chip tiny redux">
+											<span>Redux Toolkit</span>
+										</div>
+										<div class="chip tiny rest"><span>REST API</span></div>
+										<div class="chip tiny postman"><span>Postman</span></div>
+										<div class="chip tiny mui"><span>Material UI</span></div>
+										<div class="chip tiny html"><span>HTML</span></div>
+										<div class="chip tiny java"><span>Java</span></div>
+										<div class="chip tiny spring"><span>Spring Boot</span></div>
+										<div class="chip tiny sql"><span>PostgreSQL</span></div>
+										<div class="chip tiny maven"><span>Maven</span></div>
+									</div>
+								</div>
+								<button class="see-more" id="2">Click to see more</button>
+							</div>
+							<div class="project-item fv-start">
+								<div class="project-title">
+									<h5>Events App</h5>
+								</div>
+								<div class="project-details">
+									<p>Project type: <strong>Test task</strong></p>
+									<p>Stack: <strong>Front-End, Back-End</strong></p>
+									<p>Technologies:</p>
+									<div class="tech-stack small fh-start">
+										<div class="chip tiny ts"><span>TypeScript</span></div>
+										<div class="chip tiny react"><span>React</span></div>
+										<div class="chip tiny axios"><span>Axios</span></div>
+										<div class="chip tiny rest"><span>REST API</span></div>
+										<div class="chip tiny postman"><span>Postman</span></div>
+										<div class="chip tiny html"><span>HTML</span></div>
+										<div class="chip tiny css"><span>CSS</span></div>
+										<div class="chip tiny node"><span>NodeJS</span></div>
+										<div class="chip tiny mongo"><span>MongoDB</span></div>
+									</div>
+								</div>
+								<button class="see-more" id="3">Click to see more</button>
+							</div>
+							<div class="project-item fv-start">
+								<div class="project-title">
+									<h5>Quiz App</h5>
+								</div>
+								<div class="project-details">
+									<p>Project type: <strong>Test task</strong></p>
+									<p>Stack: <strong>Front-End, Back-End</strong></p>
+									<p>Technologies:</p>
+									<div class="tech-stack small fh-start">
+										<div class="chip tiny ts"><span>TypeScript</span></div>
+										<div class="chip tiny react"><span>React</span></div>
+										<div class="chip tiny html"><span>HTML</span></div>
+										<div class="chip tiny tailwind"><span>Tailwind</span></div>
+									</div>
+								</div>
+								<button class="see-more" id="4">Click to see more</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="modal-wrapper" id="modal-wrapper">
+				<div class="modal">
+					<div class="modal-content" id="modal"></div>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>
