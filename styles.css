@@ -8,6 +8,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	line-height: 1.5;
 	position: relative;
+	height: 100dvh;
 	background-color: #f0ffff;
 	--secondary-text-color: #181820;
 	--icon-color: #6a737d;
@@ -97,6 +98,11 @@ span {
 	font-size: var(--chip-font-size);
 }
 
+.white {
+	background-color: #f0f0f0;
+	transition: background-color 0.3s linear;
+}
+
 .tiny {
 	font-size: 15px;
 	padding: 2px 4px;
@@ -162,7 +168,8 @@ span {
 	background-color: #ff4500;
 }
 
-.see-more {
+.see-more,
+.close {
 	border: none;
 	border-radius: 8px;
 	padding: 5px;
@@ -173,8 +180,14 @@ span {
 	align-self: start;
 }
 
-.see-more:hover {
+.see-more:hover,
+.close:hover,
+.chip.white:hover {
 	background-color: var(--primary-text-color);
+}
+
+.max-w {
+	max-width: 600px;
 }
 
 /* Utiliti classes */
@@ -199,10 +212,24 @@ span {
 	align-items: center;
 }
 
-.modal-content {
-	border: 2px solid red;
-	width: 200px;
-	height: 200px;
+.project-title-modal {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.resp-list {
+	list-style: inside;
+}
+
+.resp-list-item {
+	list-style: inside;
+}
+
+.links {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 /* Modal */
@@ -227,7 +254,6 @@ span {
 /* About */
 .about {
 	margin: var(--section-margin);
-	display: none;
 }
 
 .about-row {
@@ -249,12 +275,13 @@ span {
 
 /* Experience */
 .experience {
-	/* display: none; */
+	display: none;
 	margin: var(--section-margin);
 }
 
 .experience-row {
 	gap: 15px;
+	padding-bottom: 40px;
 }
 
 .project-grid {
@@ -289,6 +316,21 @@ span {
 @media screen and (max-width: 840px) {
 	.project-grid {
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 630px) {
+	.project-item.max-w {
+		border-radius: 0;
+		max-width: 100%;
+	}
+
+	.modal {
+		align-items: end;
+	}
+
+	.modal-content {
+		width: 100%;
 	}
 }
 

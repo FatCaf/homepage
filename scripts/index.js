@@ -1,7 +1,9 @@
+import createModal from './createModal.js';
+
 const about = document.getElementById('about');
 const experience = document.getElementById('experience');
 const projects = document.querySelectorAll('.project-item');
-// const button = document.getElementById('button');
+const seeMore = document.querySelectorAll('.see-more');
 const modalWrapper = document.getElementById('modal-wrapper');
 const modal = document.getElementById('modal');
 const email = document.getElementById('email');
@@ -14,29 +16,41 @@ email.addEventListener('click', () => {
 	alert(text + ' copied to clipboard');
 });
 
-// button.addEventListener('click', () => {
-// 	modalWrapper.style.display = 'block';
-// 	modal.innerHTML = createModal(test);
+Array.from(seeMore).forEach((item) => {
+	item.addEventListener('click', (event) => {
+		const { id } = event.target;
+		modalWrapper.style.display = 'block';
+		document.body.style.overflow = 'hidden';
+		modal.innerHTML = createModal(id);
 
-// 	const close = document.getElementById('close');
-// 	close.addEventListener('click', () => {
-// 		modalWrapper.style.display = 'none';
-// 	});
-// });
+		const close = document.getElementById('close');
+		close.addEventListener('click', () => {
+			modalWrapper.style.display = 'none';
+			document.body.style.overflow = 'auto';
+		});
+	});
+});
 
 const getDisplayProperty = (element) =>
 	window.getComputedStyle(element).display;
 
+const toggleVisibility = (sectionToShow, sectionToHide) => {
+	const sectionToShowElement = document.querySelector(sectionToShow);
+	const sectionToHideElement = document.querySelector(sectionToHide);
+
+	const display = getDisplayProperty(sectionToShowElement);
+	if (display === 'none') {
+		sectionToShowElement.style.display = 'block';
+		sectionToHideElement.style.display = 'none';
+	} else {
+		sectionToShowElement.style.display = 'none';
+	}
+};
+
 experience.addEventListener('click', () => {
-	const experienceSection = document.querySelector('.experience');
-	const display = getDisplayProperty(experienceSection);
-	if (display === 'none') experienceSection.style.display = 'block';
-	else experienceSection.style.display = 'none';
+	toggleVisibility('.experience', '.about');
 });
 
 about.addEventListener('click', () => {
-	const aboutSection = document.querySelector('.about');
-	const display = getDisplayProperty(aboutSection);
-	if (display === 'none') aboutSection.style.display = 'block';
-	else aboutSection.style.display = 'none';
+	toggleVisibility('.about', '.experience');
 });
