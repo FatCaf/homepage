@@ -159,6 +159,7 @@ a {
 }
 
 .contact-info__item {
+    color: var(--secondary-text-color);
     width: fit-content;
     opacity: 0;
     transform: translateY(10px);
@@ -187,30 +188,14 @@ a {
     text-align: justify;
 }
 
-.intro-block {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: white;
-    animation: fadeSlideIn 1s ease-out forwards;
-    transform: translateY(-20px);
-    opacity: 0;
+.skills__header {
+    color: var(--primary-text-color);
+    margin-bottom: 15px;
 }
 
-.intro-block__greeting {
-    font-size: 2.5rem;
-    font-weight: bold;
-    animation: popIn 0.6s ease-in-out forwards;
-    opacity: 0;
-    transform: scale(0.9);
-}
-
-.intro-block__tagline {
-    font-size: 1.25rem;
-    font-weight: 300;
-    margin-top: 0.5rem;
-    animation: fadeIn 1.2s ease-in forwards;
-    opacity: 0;
+.skills__text {
+    color: var(--secondary-text-color);
+    text-align: justify;
 }
 
 @keyframes fadeSlideIn {

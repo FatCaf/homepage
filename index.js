@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutHeaderEl = document.getElementById("aboutMe");
     const aboutTextEl = document.getElementById("aboutMeText");
 
+    const skillsHeaderEl = document.getElementById('skillsHeader');
+    const skillsTextEl = document.getElementById('skillsText');
+
     [nameEl, positionEl, contactsLabelEl, tgEl, liEl, ghEl, aboutHeaderEl, aboutTextEl].forEach(el => el.textContent = "");
     aboutHeaderEl.style.opacity = "0";
 
@@ -42,14 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function animateIntro() {
-        await pause(1000); // meme delay
+        await pause(1000);
         intro.classList.add("fade-out");
         await pause(800);
         intro.style.display = "none";
 
         containerIntro.style.transition = "opacity 1s ease-in-out";
         containerIntro.style.opacity = 1;
-        await pause(1000); // fade-in
+        await pause(1000);
 
         await typeText(nameEl, "Name: Mykyta Neklesa");
         await pause(200);
@@ -79,5 +82,39 @@ document.addEventListener("DOMContentLoaded", () => {
         await typeText(aboutTextEl, finalAbout, typingDelay);
     }
 
-    animateIntro();
+    const fakeSkills = [
+        "Advanced coffee drinking ☕,",
+        "100+ WPM in writing TODO comments,",
+        "React-ing emotionally to bugs,",
+        "Certified Google searcher,",
+        "Once deployed on Friday... and survived.",
+    ];
+    const punchline = "I'm kidding))";
+    const finalSkills = `Proficient in JavaScript, TypeScript, React, Next.js, Redux Toolkit, RTK Query, 
+Node.js, NestJS, PostgreSQL, MongoDB, REST API, Websockets, Git, Postman, and React Hook Form.
+Experienced in full-cycle web application development, real-time features.`;
+
+    async function animateSkills() {
+        skillsHeaderEl.textContent = "Skills:";
+
+        for (let line of fakeSkills) {
+            await typeText(skillsTextEl, line + "\n");
+            await pause(600);
+        }
+
+        await typeText(skillsTextEl, punchline);
+        await pause(1000);
+
+        await deleteText(skillsTextEl);
+
+        await pause(500);
+        await typeText(skillsTextEl, finalSkills);
+    }
+
+    async function startAnimation() {
+        await animateIntro();
+        await animateSkills();
+    }
+
+    startAnimation();
 });
