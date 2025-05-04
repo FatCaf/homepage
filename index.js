@@ -15,6 +15,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const skillsHeaderEl = document.getElementById('skillsHeader');
     const skillsTextEl = document.getElementById('skillsText');
 
+    const experiencesHeaderEl = document.getElementById('experiencesHeader');
+    const experienceDisclaimerEl = document.getElementById('experienceDisclaimer');
+    const experiencesDurationEl = document.getElementById('experiencesDuration');
+    const companyNameEl = document.getElementById('companyName');
+    const projectRole1El = document.getElementById('projectRole1');
+    const projectName1El = document.getElementById('projectName1');
+    const projectRole2El = document.getElementById('projectRole2');
+    const projectName2El = document.getElementById('projectName2');
+    const responsibilitiesListEl1 = document.getElementById('responsibilitiesList1');
+    const responsibilitiesListEl2 = document.getElementById('responsibilitiesList2');
     [nameEl, positionEl, contactsLabelEl, tgEl, liEl, ghEl, aboutHeaderEl, aboutTextEl].forEach(el => el.textContent = "");
     aboutHeaderEl.style.opacity = "0";
 
@@ -111,9 +121,66 @@ Experienced in full-cycle web application development, real-time features.`;
         await typeText(skillsTextEl, finalSkills);
     }
 
+    const responsibilitiesProj1 = [
+        "Refactored and modernized a legacy frontend application",
+        "Implemented an extra registration step for onboarding",
+        "Integrated third-party KYC verification",
+        "Participated in backend migration to NestJS + PostgreSQL",
+        "Migrated legacy invoicing service to a new architecture",
+        "Built a real-time user balance tracking service using WebSockets",
+        "Maintained existing features and fixed bugs"
+    ];
+
+    const responsibilitiesProj2 = [
+        "Maintained and improved a complex legacy frontend codebase",
+        "Fixed long-standing bugs and performance bottlenecks in the app",
+        "Modernized parts of the frontend stack where possible",
+        "Implemented real-time updates for dashboard module",
+    ];
+
+    async function renderList(listEl, data) {
+        for (let item of data) {
+            const li = document.createElement('li');
+            listEl.appendChild(li);
+            await typeText(li, `• ${item}\n`);
+            await pause(200);
+        }
+    }
+
+    async function animateExperience() {
+        await typeText(experiencesHeaderEl, "Experience:");
+        await pause(200);
+
+        await typeText(experienceDisclaimerEl, "(*they forced me to sign NDA, so I can't tell a lot about my job, unless we pretend this all is my imagination)");
+        await pause(200);
+
+        await typeText(experiencesDurationEl, "2024-Present");
+        await pause(200);
+
+        await typeText(companyNameEl, "Meduzzen");
+        await pause(200);
+
+        await typeText(projectRole1El, "Full-Stack Developer");
+        await pause(200);
+
+        await typeText(projectName1El, "Classified project #1");
+        await pause(200);
+
+        await  renderList(responsibilitiesListEl1, responsibilitiesProj1)
+
+        await typeText(projectRole2El, "Front-End Developer");
+        await pause(200);
+
+        await typeText(projectName2El, "Classified project #2");
+        await pause(200);
+
+        await  renderList(responsibilitiesListEl2, responsibilitiesProj2)
+    }
+
     async function startAnimation() {
         await animateIntro();
         await animateSkills();
+        await animateExperience();
     }
 
     startAnimation();
