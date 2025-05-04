@@ -29,7 +29,9 @@ ul {
     list-style-type: none;
 }
 
-
+li {
+    color: var(--secondary-text-color);
+}
 
 a {
     color: black;

@@ -25,7 +25,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectName2El = document.getElementById('projectName2');
     const responsibilitiesListEl1 = document.getElementById('responsibilitiesList1');
     const responsibilitiesListEl2 = document.getElementById('responsibilitiesList2');
-    [nameEl, positionEl, contactsLabelEl, tgEl, liEl, ghEl, aboutHeaderEl, aboutTextEl].forEach(el => el.textContent = "");
+
+    const educationHeaderEl = document.getElementById("educationHeaderEl");
+    const educationYearEl = document.getElementById("educationYearEl");
+    const educationSchoolEl = document.getElementById("educationSchoolEl");
+    const educationCoursesEl = document.getElementById("educationCoursesEl");
+    const languagesHeaderEl = document.getElementById("languagesHeaderEl");
+    const languagesList = document.getElementById("languagesList")
+
+    const elements = [nameEl, positionEl, contactsLabelEl, tgEl, liEl, ghEl, aboutHeaderEl, aboutTextEl];
+    if (elements.every(el => el !== null)) {
+        elements.forEach(el => el.textContent = "");
+        aboutHeaderEl.style.opacity = "0";
+    } else {
+        console.warn("Some DOM elements not found", elements);
+    }
     aboutHeaderEl.style.opacity = "0";
 
     const typingDelay = 40;
@@ -177,10 +191,40 @@ Experienced in full-cycle web application development, real-time features.`;
         await  renderList(responsibilitiesListEl2, responsibilitiesProj2)
     }
 
+    const courses = [
+        "Computer Science",
+        "Frontend Development",
+        "Backend Development"
+    ];
+
+    const languages = [
+        "English - B2",
+        "Ukrainian - Fluent"
+    ]
+
+    async function animateEducation() {
+        await typeText(educationHeaderEl, "Education:");
+        await pause(200);
+
+        await typeText(educationYearEl, "2023-2024");
+        await pause(200);
+
+        await typeText(educationSchoolEl, "SH++ IT School");
+        await pause(200);
+
+        await renderList(educationCoursesEl, courses)
+
+        await typeText(languagesHeaderEl, "Languages:");
+        await pause(200);
+
+        await renderList(languagesList, languages)
+    }
+
     async function startAnimation() {
         await animateIntro();
         await animateSkills();
         await animateExperience();
+        await animateEducation();
     }
 
     startAnimation();
