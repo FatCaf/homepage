@@ -25,12 +25,9 @@ h6 span {
     font-weight: 400;
 }
 
-ul {
-    list-style-type: none;
-}
-
 li {
     color: var(--secondary-text-color);
+    list-style-type: none;
 }
 
 a {
@@ -294,7 +291,7 @@ a {
 }
 
 .additional-info__education-header {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     text-align: left;
     margin-bottom: 20px;
 }
@@ -321,7 +318,7 @@ a {
 }
 
 .additional-info__languages-header {
-    color: var(--secondary-text-color);
+    color: var(--primary-text-color);
     text-align: left;
     margin-bottom: 20px;
 }
