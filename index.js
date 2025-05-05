@@ -1,7 +1,11 @@
+import TEXTS  from "./assets/text/texts.js";
+import { pause, typeText, deleteText, renderList, renderListImmediately } from "./helpers/helpers.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+    const isAnimPlayed = localStorage.getItem('isAnimPlayed') === 'true';
+    localStorage.setItem('isAnimPlayed', 'true');
     const intro = document.getElementById("introOverlay");
     const containerIntro = document.querySelector(".container.full-screen");
-    containerIntro.style.opacity = 0;
 
     const nameEl = document.getElementById("name");
     const positionEl = document.getElementById("position");
@@ -12,72 +16,187 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutHeaderEl = document.getElementById("aboutMe");
     const aboutTextEl = document.getElementById("aboutMeText");
 
-    [nameEl, positionEl, contactsLabelEl, tgEl, liEl, ghEl, aboutHeaderEl, aboutTextEl].forEach(el => el.textContent = "");
+    const skillsHeaderEl = document.getElementById('skillsHeader');
+    const skillsTextEl = document.getElementById('skillsText');
+
+    const experiencesHeaderEl = document.getElementById('experiencesHeader');
+    const experienceDisclaimerEl = document.getElementById('experienceDisclaimer');
+    const experiencesDurationEl = document.getElementById('experiencesDuration');
+    const companyNameEl = document.getElementById('companyName');
+    const projectRole1El = document.getElementById('projectRole1');
+    const projectName1El = document.getElementById('projectName1');
+    const projectRole2El = document.getElementById('projectRole2');
+    const projectName2El = document.getElementById('projectName2');
+    const responsibilitiesListEl1 = document.getElementById('responsibilitiesList1');
+    const responsibilitiesListEl2 = document.getElementById('responsibilitiesList2');
+
+    const educationHeaderEl = document.getElementById("educationHeaderEl");
+    const educationYearEl = document.getElementById("educationYearEl");
+    const educationSchoolEl = document.getElementById("educationSchoolEl");
+    const educationCoursesEl = document.getElementById("educationCoursesEl");
+    const languagesHeaderEl = document.getElementById("languagesHeaderEl");
+    const languagesList = document.getElementById("languagesList")
+
+    if (isAnimPlayed) {
+        intro.style.display = "none";
+
+        nameEl.textContent = TEXTS.name;
+        positionEl.textContent = TEXTS.position;
+        contactsLabelEl.textContent = TEXTS.contactsLabel;
+        tgEl.textContent = TEXTS.telegram;
+        liEl.textContent = TEXTS.linkedin;
+        ghEl.textContent = TEXTS.github;
+        aboutHeaderEl.textContent = TEXTS.aboutHeader;
+        aboutHeaderEl.style.opacity = "1";
+        aboutTextEl.textContent = TEXTS.aboutFinal;
+
+        skillsHeaderEl.textContent = TEXTS.skillsHeader;
+        skillsTextEl.textContent = TEXTS.skillsFinal;
+
+        experiencesHeaderEl.textContent = TEXTS.experienceHeader;
+        experienceDisclaimerEl.textContent = TEXTS.experienceDisclaimer;
+        experiencesDurationEl.textContent = TEXTS.experiencesDuration;
+        companyNameEl.textContent = TEXTS.companyName;
+        projectRole1El.textContent = TEXTS.projectRole1;
+        projectName1El.textContent = TEXTS.projectName1;
+        renderListImmediately(responsibilitiesListEl1, TEXTS.responsibilitiesProj1);
+
+        projectRole2El.textContent = TEXTS.projectRole2;
+        projectName2El.textContent = TEXTS.projectName2;
+        renderListImmediately(responsibilitiesListEl2, TEXTS.responsibilitiesProj2);
+
+        educationHeaderEl.textContent = TEXTS.experienceHeader;
+        educationYearEl.textContent = TEXTS.educationYear;
+        educationSchoolEl.textContent = TEXTS.educationSchool;
+        renderListImmediately(educationCoursesEl, TEXTS.courses)
+
+        languagesHeaderEl.textContent = TEXTS.languagesHeader;
+        renderListImmediately(languagesList, TEXTS.languages)
+
+        return;
+    }
+
+    const elements = [nameEl, positionEl, contactsLabelEl, tgEl, liEl, ghEl, aboutHeaderEl, aboutTextEl];
+    if (elements.every(el => el !== null)) {
+        elements.forEach(el => el.textContent = "");
+        aboutHeaderEl.style.opacity = "0";
+    } else {
+        console.warn("Some DOM elements not found", elements);
+    }
     aboutHeaderEl.style.opacity = "0";
 
     const typingDelay = 40;
-    const pause = ms => new Promise(res => setTimeout(res, ms));
-
-    async function typeText(el, text, delay = typingDelay) {
-        for (let i = 0; i < text.length; i++) {
-            el.textContent += text[i];
-            await pause(delay);
-        }
-    }
-
-    const fakeThoughts = [
-        "Full-stack wizard... no, too cheesy.",
-        "Just a JS ninja? Sounds cringe.",
-        "Tech lover, dreamer, coffee... nah.",
-        "Okay focus... what do I actually do?",
-    ];
-
-    const finalAbout = `Hi, I'm Mykyta — a proactive full-stack developer with a background in computer science and hands-on experience in both frontend and backend development. I've completed comprehensive training in modern web technologies and currently contribute to impactful projects at Meduzzen. I'm driven by solving complex challenges, constantly bringing fresh ideas to elevate the quality and performance of every project I touch. Outside of work, I stay energized through sports like gym training and swimming.`;
-
-    async function deleteText(el, speed = 25) {
-        for (let i = el.textContent.length; i >= 0; i--) {
-            el.textContent = el.textContent.slice(0, i);
-            await pause(speed);
-        }
-    }
 
     async function animateIntro() {
-        await pause(1000); // meme delay
-        intro.classList.add("fade-out");
+        containerIntro.style.opacity = 0;
         await pause(800);
+        intro.classList.add("fade-out");
+        await pause(600);
         intro.style.display = "none";
 
         containerIntro.style.transition = "opacity 1s ease-in-out";
         containerIntro.style.opacity = 1;
-        await pause(1000); // fade-in
+        await pause(800);
 
-        await typeText(nameEl, "Name: Mykyta Neklesa");
+        await typeText(nameEl, TEXTS.name);
+        await pause(150);
+        await typeText(positionEl, TEXTS.position);
         await pause(200);
-        await typeText(positionEl, "Position: Full-Stack Developer");
+        await typeText(contactsLabelEl, TEXTS.contactsLabel);
+        await pause(150);
+        await typeText(tgEl, TEXTS.telegram);
+        await pause(100);
+        await typeText(liEl, TEXTS.linkedin);
+        await pause(100);
+        await typeText(ghEl, TEXTS.github);
         await pause(300);
-        await typeText(contactsLabelEl, "Contacts:");
-        await pause(200);
-        await typeText(tgEl, "Telegram");
-        await pause(100);
-        await typeText(liEl, "LinkedIn");
-        await pause(100);
-        await typeText(ghEl, "Github");
-        await pause(500);
 
         aboutHeaderEl.style.transition = "opacity 0.5s ease";
-        aboutHeaderEl.textContent = "About Me:";
+        aboutHeaderEl.textContent = TEXTS.aboutHeader
         aboutHeaderEl.style.opacity = "1";
-        await pause(600);
+        await pause(400);
 
-        for (let line of fakeThoughts) {
+        for (let line of TEXTS.fakeThoughts) {
             await typeText(aboutTextEl, line);
-            await pause(1000);
+            await pause(800);
             await deleteText(aboutTextEl);
         }
 
-        await pause(800);
-        await typeText(aboutTextEl, finalAbout, typingDelay);
+        await pause(600);
+        await typeText(aboutTextEl, TEXTS.aboutFinal, typingDelay);
     }
 
-    animateIntro();
+    async function animateSkills() {
+        skillsHeaderEl.textContent = TEXTS.skillsHeader;
+
+        for (let line of TEXTS.fakeSkills) {
+            await typeText(skillsTextEl, line + "\n");
+            await pause(400);
+        }
+
+        await typeText(skillsTextEl, TEXTS.punchline);
+        await pause(800);
+
+        await deleteText(skillsTextEl);
+
+        await pause(300);
+        await typeText(skillsTextEl, TEXTS.skillsFinal);
+    }
+
+    async function animateExperience() {
+        await typeText(experiencesHeaderEl, TEXTS.experienceHeader);
+        await pause(150);
+
+        await typeText(experienceDisclaimerEl, TEXTS.experienceDisclaimer);
+        await pause(150);
+
+        await typeText(experiencesDurationEl, TEXTS.experiencesDuration);
+        await pause(150);
+
+        await typeText(companyNameEl, TEXTS.companyName);
+        await pause(150);
+
+        await typeText(projectRole1El, TEXTS.projectRole1);
+        await pause(150);
+
+        await typeText(projectName1El, TEXTS.projectName1);
+        await pause(150);
+
+        await  renderList(responsibilitiesListEl1, TEXTS.responsibilitiesProj1)
+
+        await typeText(projectRole2El, TEXTS.projectRole2);
+        await pause(150);
+
+        await typeText(projectName2El, TEXTS.projectName2);
+        await pause(150);
+
+        await  renderList(responsibilitiesListEl2, TEXTS.responsibilitiesProj2)
+    }
+
+    async function animateEducation() {
+        await typeText(educationHeaderEl, TEXTS.educationHeader);
+        await pause(150);
+
+        await typeText(educationYearEl, TEXTS.educationYear);
+        await pause(150);
+
+        await typeText(educationSchoolEl, TEXTS.educationSchool);
+        await pause(150);
+
+        await renderList(educationCoursesEl, TEXTS.courses)
+
+        await typeText(languagesHeaderEl, TEXTS.languagesHeader);
+        await pause(150);
+
+        await renderList(languagesList, TEXTS.languages)
+    }
+
+    async function startAnimation() {
+        await animateIntro();
+        await animateSkills();
+        await animateExperience();
+        await animateEducation();
+    }
+
+        startAnimation();
 });
