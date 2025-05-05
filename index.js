@@ -89,40 +89,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function animateIntro() {
         containerIntro.style.opacity = 0;
-        await pause(1000);
-        intro.classList.add("fade-out");
         await pause(800);
+        intro.classList.add("fade-out");
+        await pause(600);
         intro.style.display = "none";
 
         containerIntro.style.transition = "opacity 1s ease-in-out";
         containerIntro.style.opacity = 1;
-        await pause(1000);
+        await pause(800);
 
         await typeText(nameEl, TEXTS.name);
-        await pause(200);
+        await pause(150);
         await typeText(positionEl, TEXTS.position);
-        await pause(300);
-        await typeText(contactsLabelEl, TEXTS.contactsLabel);
         await pause(200);
+        await typeText(contactsLabelEl, TEXTS.contactsLabel);
+        await pause(150);
         await typeText(tgEl, TEXTS.telegram);
         await pause(100);
         await typeText(liEl, TEXTS.linkedin);
         await pause(100);
         await typeText(ghEl, TEXTS.github);
-        await pause(500);
+        await pause(300);
 
         aboutHeaderEl.style.transition = "opacity 0.5s ease";
         aboutHeaderEl.textContent = TEXTS.aboutHeader
         aboutHeaderEl.style.opacity = "1";
-        await pause(600);
+        await pause(400);
 
         for (let line of TEXTS.fakeThoughts) {
             await typeText(aboutTextEl, line);
-            await pause(1000);
+            await pause(800);
             await deleteText(aboutTextEl);
         }
 
-        await pause(800);
+        await pause(600);
         await typeText(aboutTextEl, TEXTS.aboutFinal, typingDelay);
     }
 
@@ -131,62 +131,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (let line of TEXTS.fakeSkills) {
             await typeText(skillsTextEl, line + "\n");
-            await pause(600);
+            await pause(400);
         }
 
         await typeText(skillsTextEl, TEXTS.punchline);
-        await pause(1000);
+        await pause(800);
 
         await deleteText(skillsTextEl);
 
-        await pause(500);
+        await pause(300);
         await typeText(skillsTextEl, TEXTS.skillsFinal);
     }
 
     async function animateExperience() {
         await typeText(experiencesHeaderEl, TEXTS.experienceHeader);
-        await pause(200);
+        await pause(150);
 
         await typeText(experienceDisclaimerEl, TEXTS.experienceDisclaimer);
-        await pause(200);
+        await pause(150);
 
         await typeText(experiencesDurationEl, TEXTS.experiencesDuration);
-        await pause(200);
+        await pause(150);
 
         await typeText(companyNameEl, TEXTS.companyName);
-        await pause(200);
+        await pause(150);
 
         await typeText(projectRole1El, TEXTS.projectRole1);
-        await pause(200);
+        await pause(150);
 
         await typeText(projectName1El, TEXTS.projectName1);
-        await pause(200);
+        await pause(150);
 
         await  renderList(responsibilitiesListEl1, TEXTS.responsibilitiesProj1)
 
         await typeText(projectRole2El, TEXTS.projectRole2);
-        await pause(200);
+        await pause(150);
 
         await typeText(projectName2El, TEXTS.projectName2);
-        await pause(200);
+        await pause(150);
 
         await  renderList(responsibilitiesListEl2, TEXTS.responsibilitiesProj2)
     }
 
     async function animateEducation() {
         await typeText(educationHeaderEl, TEXTS.educationHeader);
-        await pause(200);
+        await pause(150);
 
         await typeText(educationYearEl, TEXTS.educationYear);
-        await pause(200);
+        await pause(150);
 
         await typeText(educationSchoolEl, TEXTS.educationSchool);
-        await pause(200);
+        await pause(150);
 
         await renderList(educationCoursesEl, TEXTS.courses)
 
         await typeText(languagesHeaderEl, TEXTS.languagesHeader);
-        await pause(200);
+        await pause(150);
 
         await renderList(languagesList, TEXTS.languages)
     }
